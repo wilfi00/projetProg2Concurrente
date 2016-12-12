@@ -6,27 +6,23 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
-class ConnectHandler implements Runnable
-{
+class ConnectHandler implements Runnable {
 	private Socket cs;
 
-	public ConnectHandler(Socket csocket)
-	{
+	public ConnectHandler(Socket csocket) {
 		cs = csocket;
 	}
 
-	public void run()
-	{
-		try
-		{
+	public void run() {
+		try {
 			PrintWriter out = 
 				new PrintWriter(cs.getOutputStream(), true);
 			BufferedReader in =
 				new BufferedReader(
 					new InputStreamReader(cs.getInputStream()));
 			String inputLine = in.readLine();
-			while(inputLine != null)
-			{
+			
+			while(inputLine != null) {
 				System.out.println("[from " 
 							+ cs.getInetAddress() 
 							+ "]: " 
@@ -48,7 +44,7 @@ public class SimpleServer
 {
 	public static void main(String args[]) 
 	{
-		int portNumber = 1234;
+		int portNumber = 2345;
 		if(args.length == 1)
 		{
 			portNumber = Integer.parseInt(args[0]);
